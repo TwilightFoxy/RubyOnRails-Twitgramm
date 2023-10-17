@@ -1,0 +1,23 @@
+<h2>Добро пожаловать, <%= current_user.email %>!</h2>
+<script>
+  console.log("main is loaded!");
+</script>
+<%= form_with model: @post, html: { id: "new-post-form" } do |f| %>
+  <div class="new-post">
+    <%= f.text_area :description, placeholder: "Что у вас нового?", class: "new-post-textarea", required: true %>
+    <%= f.submit "Опубликовать", class: "new-post-submit", disabled: true %>
+  </div>
+<% end %>
+
+<h2>Лента</h2>
+<ul class="posts-list">
+  <% @posts.each do |post| %>
+    <li>
+      <%= render partial: 'post', locals: { post: post } %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="logout-button">
+  <%= button_to "Выход", destroy_user_session_path, method: :delete %>
+</div>
