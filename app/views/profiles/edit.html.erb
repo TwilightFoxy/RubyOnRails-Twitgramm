@@ -1,2 +1,27 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<h2>Редактировать профиль</h2>
+<!-- Боковое меню -->
+<div class="sidebar">
+  <%= render 'shared/menu' %>
+</div>
+<%= form_with(model: @user, url: profile_path, method: :patch, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :username, "Имя пользователя" %>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+
+  <%# Если настроен ActiveStorage для изображений %>
+  <div class="form-group">
+    <%= f.label :avatar, "Аватар" %>
+    <%= f.file_field :avatar, class: "form-control" %>
+  </div>
+  <%# - конец блока ActiveStorage %>
+
+  <div class="form-group">
+    <%= f.submit "Сохранить изменения", class: "btn btn-primary" %>
+  </div>
+
+  <%= link_to "Изменить почту или пароль", edit_user_registration_path %>
+  <div>
+    <%= link_to "Выйти без изменений", request.referrer || root_path %>
+  </div>
+<% end %>

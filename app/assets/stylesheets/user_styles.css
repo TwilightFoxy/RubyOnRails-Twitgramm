@@ -1,0 +1,75 @@
+/*.user-info {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.username {*/
+/*    margin-right: 15px;*/
+/*}*/
+
+/*body {*/
+/*    background: linear-gradient(45deg, #FFB6C1, #87CEFA);*/
+/*    height: 100vh;*/
+/*    margin: 0;*/
+/*    font-family: Arial, sans-serif;*/
+/*    background-size: 400% 400%;*/
+/*    animation: gradientAnimation 15s ease infinite;*/
+/*}*/
+
+/*@keyframes gradientAnimation {*/
+/*    0% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+/*    100% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*}*/
+
+/*.container {*/
+/*    display: flex;*/
+/*}*/
+
+/*.sidebar {*/
+/*    width: 250px;*/
+/*    background-color: #f8f8f8;*/
+/*    padding: 15px;*/
+/*    box-shadow: 2px 0 5px rgba(0,0,0,0.1);*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    height: 100%;*/
+/*    overflow-y: auto;*/
+/*}*/
+
+/*.main-content {*/
+/*    margin-left: 265px;  !* 250px + 15px (боковой отступ из .sidebar) *!*/
+/*    padding: 0 15px;*/
+/*}*/
+/*.user-avatar {*/
+/*    width: 300px;*/
+/*    height: 300px;*/
+/*    object-fit: cover;*/
+/*    border-radius: 33%;*/
+/*}*/
+/*.avatar-feed-small {*/
+/*    width: 64px;*/
+/*    height: 64px;*/
+/*    border-radius: 33%;*/
+/*    object-fit: cover;*/
+/*}*/
+/*.flex-container {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    flex-wrap: nowrap;*/
+/*}*/
+/*.post-image {*/
+/*    height: 300px;*/
+/*    width: auto;*/
+/*    display: block;*/
+/*    margin: 10px 0;*/
+/*    max-width: 100%;*/
+/*}*/

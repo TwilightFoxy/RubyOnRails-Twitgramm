@@ -1,7 +1,7 @@
 <h1>Добро пожаловать в наш Twit-gram!</h1>
 <p>Здесь будет основное содержимое страницы.</p>
 <% if user_signed_in? %>
-  Здравствуйте, <%= current_user.email %>!
+  Здравствуйте, <%= current_user.display_name %>!
   <%= button_to "Выход", destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to "Войти", new_user_session_path %> |

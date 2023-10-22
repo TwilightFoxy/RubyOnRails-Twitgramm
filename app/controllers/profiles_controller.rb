@@ -1,25 +1,63 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+
   def show
-    @user = User.find(params[:id])
+    @user = params[:id].present? ? User.find(params[:id]) : current_user
+
+    puts "Параметры ID: #{params[:id]}"
+    puts "Текущий пользователь: #{current_user.id}"
+    puts "@user ID: #{@user.id}"
+
+    @posts = @user.posts.order(created_at: :desc)
   end
 
+
+
+
+
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(profile_params)
-      redirect_to profile_path(@user), notice: 'Профиль обновлен!'
+    @user = User.find(current_user.id) # или просто current_user, если у вас есть такой метод
+    if @user.update(user_params)
+      redirect_to profile_path, notice: 'Описание обновлено'
     else
       render :edit
     end
   end
+
+
+  def index
+    if params[:search].present?
+      @users = User.where("username LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      @search_info = "Результаты поиска для '#{params[:search]}': #{@users.count} пользователей найдено."
+    else
+      @users = User.all
+      @search_info = "Полный список пользователей."
+    end
+  end
+
+
+  def friends
+    @friends = current_user.following
+    if params[:search].present?
+      @friends = @friends.where("username LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      @search_info = "Результаты поиска для: #{params[:search]}"
+    end
+  end
+
 
   private
 
   def profile_params
     params.require(:user).permit(:username, :avatar)
   end
-
+  def set_user
+    @user = User.find(params[:id])
+  end
+  def user_params
+    params.require(:user).permit(:description)
+  end
 end

@@ -1,0 +1,54 @@
+<div class="post-content" id="anchor-post-<%= post.id %>">
+  <div class="user-info flex-container">
+    <% if post.user.avatar.attached? %>
+      <%= image_tag(post.user.avatar, class: "avatar-feed-small", size: "64x64") %>
+    <% else %>
+      <%= image_tag("default_avatar.png", class: "user-avatar", size: "64x64") %>
+    <% end %>
+
+    <%= link_to post.user.username || post.user.display_name, profile_path(post.user), class: "username flex-grow" %>
+
+    <% if current_user == post.user %>
+      <%= link_to "Редактировать", edit_post_path(post), class: "edit-post", data: { toggle: "modal", target: "#editPostModal-#{post.id}" } %>
+    <% else %>
+      <div class="edit-post-placeholder" style="visibility: hidden;">Редактировать</div>
+    <% end %>
+  </div>
+
+  <div class="post-divider"></div>
+
+  <div><%= post.description %></div>
+
+  <% if post.image.attached? %>
+    <div class="post-image-wrapper">
+      <%= link_to rails_blob_url(post.image), target: "_blank" do %>
+        <%= image_tag(post.image, class: "post-image") %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="d-flex justify-content-between actions-container">
+    <% liked = user_like(post) %>
+    <% if liked %>
+      <%= button_to like_path(liked), method: :delete, remote: true, data: { post_id: post.id, action: "unlike" }, id: "unlike-button-#{post.id}", class: "no-border-button" do %>
+        <%= image_tag("like.png", alt: "Удалить лайк") %>
+      <% end %>
+    <% else %>
+      <%= button_to likes_path(post_id: post.id), method: :post, remote: true, data: { post_id: post.id, action: "like" }, id: "like-button-#{post.id}", class: "no-border-button" do %>
+        <%= image_tag("unlike.png", alt: "Лайк") %>
+      <% end %>
+    <% end %>
+
+    <div class="d-flex justify-content-center align-items-center likes-container" style="flex: 1;">
+      <span id="post-<%= post.id %>-likes"><%= post.likes.count %> <%= russian_pluralize(post.likes.count, 'лайк', 'лайка', 'лайков') %></span>
+    </div>
+
+    <button type="button" class="comment-button" data-toggle="modal" data-target="#commentsModal-<%= post.id %>">
+      <%= image_tag("comment.png", alt: "Комментарии", class: "comment-image") %>
+    </button>
+  </div>
+
+  <!-- Модальное окно для комментариев -->
+  <%= render partial: 'shared/comments_modal', locals: { post: post } %>
+  <%= render partial: 'shared/edit_post_modal', locals: { post: post } %>
+</div>

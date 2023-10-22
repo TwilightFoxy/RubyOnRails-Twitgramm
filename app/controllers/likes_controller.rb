@@ -12,7 +12,7 @@ class LikesController < ApplicationController
         new_like_count: @post.likes.count
       })
 
-      redirect_to root_path
+      redirect_to root_path(anchor: "anchor-post-#{@post.id}")
     else
       redirect_to root_path, alert: 'Вы уже ставили лайк этому посту.'
     end
@@ -31,7 +31,7 @@ class LikesController < ApplicationController
         new_like_count: post.likes.count
       })
 
-      redirect_to root_path
+      redirect_to root_path(anchor: "anchor-post-#{post.id}")
     else
       redirect_to root_path, alert: 'Ошибка удаления лайка.'
     end

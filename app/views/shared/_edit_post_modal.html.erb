@@ -1,0 +1,18 @@
+<div class="modal fade" id="editPostModal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel-<%= post.id %>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong>Редактирование поста</strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: post, local: true, html: { class: 'edit-post-form' } do |f| %>
+          <%= f.text_area :description, class: "form-control", placeholder: "Что у вас нового?" %>
+          <%= f.submit "Сохранить изменения", class: "btn btn-primary mt-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

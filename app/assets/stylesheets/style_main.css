@@ -1,0 +1,599 @@
+/* ==================== Палитра ==================== */
+:root {
+    --primary-color: #8EAADC;
+    --background-color: #FFE5ED;
+    --content-background-color: #F4F4F6;
+    --text-color: #4B4B4B;
+    --light-text-color: #9C9C9C;
+    --soft-pink: #FFD1DC;
+}
+
+/* ==================== Общие стили ==================== */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ==================== Стили меню ==================== */
+.sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 250px;
+    padding: 20px;
+    background-color: var(--content-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--soft-pink);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    padding: 0;
+}
+
+.sidebar ul li {
+    list-style-type: none;
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: var(--soft-pink);
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: var(--primary-color);
+    color: var(--content-background-color);
+}
+
+.sidebar ul li a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--primary-color);
+    color: var(--content-background-color);
+}
+
+/* ==================== Основной контент ==================== */
+.main-content {
+    margin-left: 290px;
+    flex: 1;
+    background-color: transparent;
+    text-align: left;
+}
+
+.main-content h2 {
+    color: var(--primary-color);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.new-post, .posts-list li {
+    background-color: var(--content-background-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.posts-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.post-image {
+    height: 300px;
+    width: auto;
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.centered-header {
+    text-align: center;
+}
+
+/* ==================== Тематические стили ==================== */
+/* Тема по умолчанию (Twitter-like) */
+:root {
+    --primary-color: #1DA1F2;
+    --secondary-color: #FFFFFF;
+    --accent-color: #657786;
+}
+
+/* Темная тема */
+body.dark-theme {
+    --primary-color: #121212;
+    --secondary-color: #181818;
+    --accent-color: #B0B0B0;
+}
+
+/* Нежная тема 1 */
+body.soft-theme-1 {
+    --primary-color: var(--soft-pink);
+    --secondary-color: #FFF4F4;
+    --accent-color: #FF7F95;
+}
+
+/* ==================== Дополнительные стили ==================== */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.username {
+    margin-left: 16px;
+    font-size: 24px;
+}
+
+.user-avatar {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 33%;
+}
+
+.avatar-feed-small {
+    width: 64px;
+    height: 64px;
+    border-radius: 33%;
+    object-fit: cover;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.edit-post {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: var(--soft-pink);
+    border-radius: 5px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.edit-post:hover {
+    background-color: var(--primary-color);
+    color: var(--content-background-color);
+}
+
+.post-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-divider::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(to right, var(--text-color) 0%, var(--text-color) 45%, transparent 45%, transparent 55%, var(--text-color) 55%, var(--text-color) 100%);
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.post-content::before::after {
+    content: "*";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.likes-container, .likes-container * {
+    margin: 0;
+    padding: 0;
+}
+
+#unlike-button, #like-button, .btn.btn-primary {
+    min-width: 120px;
+}
+
+.edit-post-placeholder {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.like-image {
+    border: none;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.like-image:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.btn.btn-primary.comment-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.no-border-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==================== Стили модального окна ==================== */
+.modal-content {
+    background-color: var(--content-background-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header strong {
+    color: var(--secondary-color);
+}
+
+.modal-header .close {
+    color: var(--secondary-color);
+    opacity: 0.7;
+}
+
+.modal-header .close:hover {
+    color: var(--secondary-color);
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.btn.btn-secondary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition: background-color 0.3s;
+}
+
+.btn.btn-secondary:hover {
+    background-color: var(--soft-pink);
+}
+
+p#comment {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--light-text-color);
+}
+
+hr {
+    border-top: 1px solid var(--primary-color);
+    margin: 20px 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color), 0.3);
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.btn.btn-primary:hover {
+    background-color: var(--soft-pink);
+}
+
+/* Стиль для кнопки "Прикрепить" */
+.custom-file-upload {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.custom-file-upload-label {
+    padding: 10px 16px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-file-upload-label:hover {
+    background-color: var(--soft-pink);
+}
+
+/* Стиль для кнопки "Опубликовать" */
+.btn-custom-submit {
+    padding: 10px 16px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.btn-custom-submit:hover {
+    background-color: var(--soft-pink);
+}
+
+.new-post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.upload-preview {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.site-logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.delete-post {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    border-radius: 5px;
+    color: var(--content-background-color);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.delete-post:hover {
+    background-color: #e53e3e;
+}
+
+.actions-container > * {
+    align-self: center;
+}
+
+.comment-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+}
+
+.comment-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.comment-button img.comment-image {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ==================== Стили Профиль ==================== */
+.profile-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.user-profile {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--content-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.user-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn-follow {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-follow:hover {
+    background-color: var(--soft-pink);
+}
+
+.self-profile-tag {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+}
+
+.post {
+    padding: 1rem;
+    background-color: var(--content-background-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.post-divider {
+    border-top-color: var(--light-text-color);
+}
+
+.post-description {
+    margin-bottom: 1rem;
+}
+
+.post-actions {
+    gap: 1rem;
+}
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.user-description {
+    flex: 1;
+}
+.follow-button {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+}
+
+.follow-button:hover {
+    background-color: var(--soft-pink);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+}
+.centered-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    margin-right: 1rem;
+}
+
+.friends-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.friends-table th, .friends-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.friends-table tr:hover {
+    background-color: var(--soft-pink);
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.flex-container > *:not(:last-child) {
+    margin-right: 0.5rem;
+}
+.search-input {
+    width: 250px;
+    margin-right: 1rem;
+}
+.logout-button {
+    background: none;        /* Убираем фон */
+    border: none;            /* Убираем рамку */
+    color: inherit;          /* Наследуем цвет текста от родителя */
+    font: inherit;           /* Наследуем шрифт от родителя */
+    cursor: pointer;         /* Устанавливаем курсор как у ссылки */
+    text-align: left;        /* Выравниваем текст по левому краю */
+    display: block;          /* Делаем кнопку блочным элементом, чтобы она занимала всю ширину */
+    width: 100%;             /* Устанавливаем ширину в 100% */
+    padding: 0;              /* Убираем отступы */
+    outline: none;           /* Убираем контур, который может появиться при нажатии */
+}

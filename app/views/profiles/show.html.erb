@@ -1,2 +1,67 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="container">
+
+  <!-- Боковое меню -->
+  <div class="sidebar">
+    <%= render 'shared/menu' %>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="main-content">
+
+    <!-- Заголовок и почта -->
+    <div class="profile-header">
+      <h2 class="centered-header"><%= @user.username %></h2>
+      <p class="centered-header"><%= @user.email %></p>
+    </div>
+
+    <!-- Аватар и описание -->
+    <div class="d-flex align-items-center mb-3">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: "user-avatar mr-3" %>
+      <% end %>
+      <% if current_user == @user %>
+        <%= form_with model: @user, url: profile_path, local: true do |f| %>
+          <%= f.text_area :description, placeholder: "Добавьте описание...", class: "user-description" %>
+          <%= f.submit "Сохранить", class: "btn btn-primary mt-2" %>
+        <% end %>
+      <% else %>
+        <p><%= @user.description %></p>
+      <% end %>
+    </div>
+
+    <!-- Действия пользователя -->
+    <div class="user-actions d-flex justify-content-center align-items-center mb-3">
+      <% if current_user == @user %>
+        <span>Это ваш профиль</span>
+      <% else %>
+        <% if current_user.following?(@user) %>
+          <%= button_to "Отписаться", relationship_path(current_user.relationship_with(@user)), method: :delete, class: "follow-button btn btn-outline-danger" %>
+        <% else %>
+          <%= button_to "Подписаться", relationships_path(followed_id: @user.id), method: :post, class: "follow-button btn btn-primary" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Статистика пользователя -->
+    <div class="user-stats mb-3">
+      <div>
+        <strong><%= @user.following.count %></strong> подписок
+      </div>
+      <div>
+        <strong><%= @user.followers.count %></strong> подписчиков
+      </div>
+    </div>
+
+    <!-- Лента постов -->
+    <div class="feed">
+      <h2 class="centered-header">Лента</h2>
+      <ul class="posts-list">
+        <% @posts.each do |post| %>
+          <li class="post-item">
+            <%= render partial: 'shared/post', locals: { post: post } %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

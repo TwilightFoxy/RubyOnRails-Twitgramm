@@ -78,3 +78,5 @@ gem 'toastr-rails'
 gem 'pundit'
 gem 'bootstrap'
 
+gem 'image_processing'
+gem 'mini_magick'

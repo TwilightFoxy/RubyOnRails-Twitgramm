@@ -1,23 +1,57 @@
-<h2>Добро пожаловать, <%= current_user.email %>!</h2>
-<script>
-  console.log("main is loaded!");
-</script>
-<%= form_with model: @post, html: { id: "new-post-form" } do |f| %>
-  <div class="new-post">
-    <%= f.text_area :description, placeholder: "Что у вас нового?", class: "new-post-textarea", required: true %>
-    <%= f.submit "Опубликовать", class: "new-post-submit", disabled: true %>
+<div class="container">
+
+  <!-- Боковое меню -->
+  <!--  <div class="sidebar">-->
+  <%#= render 'shared/menu' %>
+  <!--  </div>-->
+
+  <div class="sidebar">
+    <%= render 'shared/menu' %>
   </div>
-<% end %>
 
-<h2>Лента</h2>
-<ul class="posts-list">
-  <% @posts.each do |post| %>
-    <li>
-      <%= render partial: 'post', locals: { post: post } %>
-    </li>
-  <% end %>
-</ul>
+  <!-- Основной контент -->
+  <div class="main-content">
+    <!-- Заголовок -->
+    <div class="content-header">
+      <h2 class="centered-header">Twitgram</h2>
+    </div>
 
-<div class="logout-button">
-  <%= button_to "Выход", destroy_user_session_path, method: :delete %>
+    <!-- Форма нового поста -->
+    <div class="new-post-section">
+      <%= form_with model: @post, html: { id: "new-post-form" } do |f| %>
+        <div class="new-post">
+          <%= f.text_area :description, placeholder: "Что у вас нового?", class: "new-post-textarea", required: true %>
+
+          <div class="new-post-actions">
+            <div class="custom-file-upload">
+              <%= f.file_field :image, id: "file-upload", style: "display: none;" %>
+              <label for="file-upload" class="custom-file-upload-label">
+                Прикрепить
+              </label>
+              <span id="file-upload-status"></span>
+            </div>
+            <div class="file-preview">
+              <img id="file-preview-image" src="#" alt="Предварительный просмотр изображения" class="upload-preview" style="display: none;"/>
+              <span id="file-name"></span>
+            </div>
+
+            <%= f.submit "Опубликовать", class: "btn-custom-submit", disabled: true %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
+    <!-- Лента постов -->
+    <div class="feed">
+      <h2 class="centered-header">Лента</h2>
+      <ul class="posts-list">
+        <% @feed_items.each do |post| %>
+          <li class="post-item">
+            <%= render partial: 'shared/post', locals: { post: post } %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
