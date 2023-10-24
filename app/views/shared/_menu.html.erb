@@ -1,0 +1,13 @@
+<div class="logo-container">
+  <%= image_tag("logo.png", alt: "Логотип Twitgram", class: "site-logo") %>
+</div>
+<h3>Меню</h3>
+<ul class="list-unstyled">
+  <li><%= link_to "Лента", posts_path, class: "menu-link" %></li>
+  <li><%= link_to current_user.username, profile_path(current_user), class: "menu-link" %></li>
+  <li><%= link_to "Друзья", friends_path, class: "menu-link" %></li>
+  <li><%= link_to "Поиск пользователей", profiles_path, class: "menu-link" %></li>
+  <li><%= link_to "Редактировать профиль", edit_profile_path, class: "menu-link" %></li>
+  <li><%= link_to "Изменить пароль или e-mail", edit_user_registration_path, class: "menu-link" %></li>
+  <li><%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "menu-link logout-button" %></li>
+</ul>

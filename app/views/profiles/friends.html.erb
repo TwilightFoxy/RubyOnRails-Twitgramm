@@ -1,0 +1,53 @@
+<div class="container">
+
+  <!-- Боковое меню -->
+  <div class="sidebar">
+    <%= render 'shared/menu' %>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="main-content">
+    <h1 class="centered-header">Друзья</h1>
+
+    <div class="search-box mb-3">
+      <%= form_with(url: friends_path, method: :get, local: true) do |f| %>
+        <%= f.text_field :search, placeholder: "Поиск по никнейму или почте", class: "search-input" %>
+        <%= f.submit "Поиск", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+    <p><%= @search_info %></p>
+
+    <table class="table friends-table">
+      <thead>
+      <tr>
+        <th>Никнейм</th>
+        <th>Email</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td><%= friend.username %></td>
+          <td><%= friend.email %></td>
+          <td>
+            <div class="flex-container">
+              <% if current_user == friend %>
+                <span>Это ваш профиль</span>
+              <% else %>
+                <%= link_to "Посмотреть профиль", user_profile_path(friend), class: "mr-2" %>
+                <% if current_user.following?(friend) %>
+                  <%= button_to "Отписаться", relationship_path(current_user.relationship_with(friend)), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                <% else %>
+                  <%= button_to "Подписаться", relationships_path(followed_id: friend.id), method: :post, class: "btn btn-primary btn-sm" %>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
