@@ -20,11 +20,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id) # или просто current_user, если у вас есть такой метод
+    @user = User.find(current_user.id)
     if @user.update(user_params)
       redirect_to profile_path, notice: 'Описание обновлено'
-    else
-      render :edit
     end
   end
 
@@ -51,12 +49,12 @@ class ProfilesController < ApplicationController
 
   private
 
-  def profile_params
-    params.require(:user).permit(:username, :avatar)
-  end
-  def set_user
-    @user = User.find(params[:id])
-  end
+  # def profile_params
+  #   params.require(:user).permit(:username, :avatar)
+  # end
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
   def user_params
     params.require(:user).permit(:description)
   end

@@ -14,12 +14,15 @@ Rails.application.routes.draw do
   # Маршрут для списка профилей
   resources :profiles, only: [:index]
 
+  get 'friends', to: 'profiles#friends', as: :friends
+
   resources :posts, only: [:new, :create, :index, :destroy, :edit, :update, :show] do
     resources :comments, only: [:create, :destroy]
+    collection do
+      get :feed
+    end
   end
 
   resources :likes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-
-  get 'friends', to: 'profiles#friends', as: :friends
 end

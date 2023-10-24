@@ -8,23 +8,21 @@ class PostsController < ApplicationController
     @feed_items = current_user.feed.order(created_at: :desc)
   end
 
-  def feed
-    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
-  end
+  # def feed
+  #   following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+  #   Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: current_user.id)
+  # end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  # def show
+  #   @post = Post.find(params[:id])
+  # end
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to root_path, notice: 'Пост успешно создан.'
-    else
-      @posts = Post.order(created_at: :desc)
-      render :index
     end
   end
+
 
   def destroy
     if @post.user == current_user
@@ -35,9 +33,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  # def edit
+  #   @post = Post.find(params[:id])
+  # end
 
   def update
     @post = Post.find(params[:id])

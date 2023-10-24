@@ -80,3 +80,16 @@ gem 'bootstrap'
 
 gem 'image_processing'
 gem 'mini_magick'
+group :test do
+  gem 'simplecov', require: false
+end
+group :development, :test do
+  gem 'rspec-rails'
+end
+group :test do
+  gem 'shoulda-matchers'
+end
+group :test do
+  gem 'factory_bot_rails'
+end
+gem 'rails-controller-testing'
