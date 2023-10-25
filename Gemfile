@@ -93,3 +93,5 @@ group :test do
   gem 'factory_bot_rails'
 end
 gem 'rails-controller-testing'
+
+gem 'pg'
