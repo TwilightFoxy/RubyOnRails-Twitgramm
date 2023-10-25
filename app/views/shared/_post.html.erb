@@ -6,7 +6,7 @@
       <%= image_tag("default_avatar.png", class: "user-avatar", size: "64x64") %>
     <% end %>
 
-    <%= link_to post.user.username, user_profile_path(post.user), class: "username flex-grow" %>
+    <%= link_to post.user.nickname, user_profile_path(post.user), class: "username flex-grow" %>
 
     <% if current_user == post.user %>
       <%= link_to "Редактировать", edit_post_path(post), class: "edit-post", data: { toggle: "modal", target: "#editPostModal-#{post.id}" } %>
