@@ -2,23 +2,22 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+
+development:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: twitgram_base
   username: twit_user
   password: 111
   host: localhost
 
-development:
-  <<: *default
-  database: myapp_development
-
 test:
   <<: *default
-  database: myapp_test
+  database: mysite_test
 
 production:
   <<: *default
   database: twitgram_base
   username: twit_user
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
-  host: dpg-cksfk8p0at9c73d9e4cg-a
-  port: 5432
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>

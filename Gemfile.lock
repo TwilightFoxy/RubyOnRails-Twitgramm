@@ -110,6 +110,8 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.16.3)
+    get_process_mem (0.2.7)
+      ffi (~> 1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -164,6 +166,9 @@ GEM
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
+    puma_worker_killer (0.3.1)
+      get_process_mem (~> 0.2)
+      puma (>= 2.7)
     pundit (2.3.1)
       activesupport (>= 3.0.0)
     racc (1.7.1)
@@ -309,6 +314,7 @@ DEPENDENCIES
   mini_magick
   pg
   puma (~> 5.0)
+  puma_worker_killer
   pundit
   rails (~> 7.0.8)
   rails-controller-testing
