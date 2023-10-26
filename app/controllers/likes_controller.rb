@@ -5,13 +5,6 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     if @post.likes.where(user_id: current_user.id).blank?
       @like = @post.likes.create(user_id: current_user.id)
-
-      ActionCable.server.broadcast(:post_updates_channel, {
-        type: 'new_like',
-        post_id: @post.id,
-        new_like_count: @post.likes.count
-      })
-
       redirect_to root_path(anchor: "anchor-post-#{@post.id}")
     else
       redirect_to root_path, alert: 'Вы уже ставили лайк этому посту.'
@@ -24,13 +17,6 @@ class LikesController < ApplicationController
 
     if @like.user == current_user
       @like.destroy
-
-      ActionCable.server.broadcast(:post_updates_channel, {
-        type: 'remove_like',
-        post_id: post.id,
-        new_like_count: post.likes.count
-      })
-
       redirect_to root_path(anchor: "anchor-post-#{post.id}")
     else
       redirect_to root_path, alert: 'Ошибка удаления лайка.'
