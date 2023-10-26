@@ -95,4 +95,3 @@ end
 gem 'rails-controller-testing'
 
 gem 'pg'
-gem 'puma_worker_killer'
