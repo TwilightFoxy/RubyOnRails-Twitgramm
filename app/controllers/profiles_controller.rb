@@ -49,13 +49,10 @@ class ProfilesController < ApplicationController
 
   private
 
-  # def profile_params
-  #   params.require(:user).permit(:username, :avatar)
-  # end
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+  def set_user
+    @user = User.find(params[:id])
+  end
   def user_params
-    params.require(:user).permit(:description)
+    params.require(:user).permit(:description, :nickname, :avatar)
   end
 end
