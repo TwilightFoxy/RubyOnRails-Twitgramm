@@ -13,9 +13,15 @@ class PostsController < ApplicationController
   #   Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: current_user.id)
   # end
 
-  # def show
-  #   @post = Post.find(params[:id])
-  # end
+  def show
+    @post = Post.find_by(id: params[:id])
+
+    if @post.nil?
+      redirect_to root_path, alert: 'Пост не найден.'
+      return
+    end
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
