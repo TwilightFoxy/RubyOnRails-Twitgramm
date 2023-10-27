@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.where("username LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      @users = User.where("nickname LIKE ? OR email LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       @search_info = "Результаты поиска для '#{params[:search]}': #{@users.count} пользователей найдено."
     else
       @users = User.all
