@@ -1,9 +1,10 @@
 <div class="post-content" id="anchor-post-<%= post.id %>">
   <div class="user-info flex-container">
+
     <% if post.user.avatar.attached? %>
       <%= image_tag(post.user.avatar, class: "avatar-feed-small", size: "64x64") %>
     <% else %>
-      <%= image_tag("default_avatar.png", class: "user-avatar", size: "64x64") %>
+      <%= image_tag("default_avatar.png", class: "avatar-feed-small", size: "64x64") %>
     <% end %>
 
     <%= link_to post.user.nickname, user_profile_path(post.user), class: "username flex-grow" %>

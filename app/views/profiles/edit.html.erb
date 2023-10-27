@@ -5,8 +5,8 @@
 </div>
 <%= form_with(model: @user, url: profile_path, method: :patch, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :username, "Имя пользователя" %>
-    <%= f.text_field :username, class: "form-control" %>
+    <%= f.label :nickname, "Никнейм пользователя" %>
+    <%= f.text_field :nickname, class: "form-control" %>
   </div>
 
   <%# Если настроен ActiveStorage для изображений %>
