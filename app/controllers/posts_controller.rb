@@ -16,9 +16,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
 
-    if @post.nil?
-      redirect_to root_path, alert: 'Пост не найден.'
-      return
+    if @post.user == current_user
+      @post.destroy
+      redirect_to root_path, notice: 'Пост успешно удален.'
+    else
+      redirect_to root_path, alert: 'Ошибка удаления.'
     end
   end
 
