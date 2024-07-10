@@ -18,6 +18,7 @@ test:
 
 production:
   <<: *default
-  database: twitgram_base
+  database: twitgram_base_wrt8
   username: twit_user
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  host: dpg-cq75u308fa8c7385714g-a
