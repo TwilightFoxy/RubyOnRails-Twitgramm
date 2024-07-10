@@ -5,8 +5,6 @@ default: &default
 
 development:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
   database: twitgram_base
   username: twit_user
   password: 111
