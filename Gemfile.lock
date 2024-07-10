@@ -307,6 +307,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mini_magick
+  mini_racer
   pg
   puma (~> 5.0)
   pundit
@@ -318,7 +319,6 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   toastr-rails
   turbo-rails
@@ -330,3 +330,4 @@ RUBY VERSION
 
 BUNDLED WITH
    2.4.16
+
