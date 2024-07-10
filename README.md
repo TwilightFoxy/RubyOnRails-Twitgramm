@@ -14,7 +14,7 @@
 <img width="720" alt="rspec_test" src="https://github.com/TwilightFoxy/jetruby_final_project/assets/62305710/20581d86-e638-48b2-b524-102ec98154b8">
 ---
 
-## [🌍 Нажмите здесь, чтобы посетить Twitgram](#)
+## [🌍 Нажмите здесь, чтобы посетить Twitgram](https://twitgram.onrender.com)
 
 ## Автор ✍️
 
